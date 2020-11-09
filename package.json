@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "iife": "rollup main.js --file bundle.js --format iife",
+    "umd": "rollup main.js --file bundle.js --format umd --name 'myBundle'"
+  }
+}
