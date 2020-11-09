@@ -1,6 +1,16 @@
 {
+  "name": "my-rollup",
+  "version": "1.0.0",
   "scripts": {
-    "iife": "rollup main.js --file bundle.js --format iife",
-    "umd": "rollup main.js --file bundle.js --format umd --name 'myBundle'"
+    "rollup": "rollup -c rollup.config.js",
+    "build:iife": "MODULE_TYPE=iife npm run rollup",
+    "build:cjs": "MODULE_TYPE=cjs npm run rollup",
+    "build:esm": "MODULE_TYPE=esm npm run rollup",
+    "build:umd": "MODULE_TYPE=umd npm run rollup",
+    "build": "npm run build:iife && npm run build:cjs && npm run build:esm && npm run build:umd"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "rollup": "^2.33.1"
   }
 }
