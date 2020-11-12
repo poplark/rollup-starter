@@ -1,4 +1,7 @@
 import json from '@rollup/plugin-json';
+import typescript from '@rollup/plugin-typescript';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import { name } from './package.json';
 
 let filename = 'bundle.js';
@@ -28,11 +31,17 @@ switch (process.env.MODULE_TYPE) {
 }
 
 export default {
-  input: 'main.js',
+  input: 'src/main.ts',
   output: {
+    // dir: 'types',
     file: `dist/${filename}`,
     format,
     name: libName ? libName : undefined,
   },
-  plugins: [ json() ]
+  plugins: [
+    json(),
+    resolve(),
+    commonjs(),
+    typescript(),
+  ],
 }
