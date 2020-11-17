@@ -4,4 +4,5 @@
 
 Note (todo):
 1. @rollup/plugin-typescript 未搞定，同时生成 umd + esm 的包
-2. 
+2. rollup progress (dev mode)
+3. test case examples
