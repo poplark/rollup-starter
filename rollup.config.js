@@ -4,21 +4,23 @@ import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
-import * as path from 'path';
+// import * as path from 'path';
 import { name, main, module, version } from './package.json';
 
 export default {
-  input: 'src/main.ts',
+  input: 'src/index.ts',
   output: [{
-    dir: path.parse(main).dir,
     format: 'umd',
+    // dir: path.parse(main).dir,
+    file: main,
     name,
   }, {
-    dir: path.parse(module).dir,
     format: 'esm',
+    // dir: path.parse(module).dir,
+    file: module,
   // }, {
-  //   dir: 'cjs',
   //   format: 'cjs',
+  //   dir: 'cjs',
   // }, {
   //   dir: 'iffe',
   //   format: 'iife',
@@ -28,7 +30,9 @@ export default {
     json(),
     resolve(),
     commonjs(),
-    typescript(),
+    typescript({
+      useTsconfigDeclarationDir: true
+    }),
     replace({
       __buildVersion: JSON.stringify(version)
     })

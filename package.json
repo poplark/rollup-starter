@@ -1,15 +1,17 @@
 {
   "name": "my-rollup",
   "version": "1.0.0",
-  "main": "umd/index.js",
-  "module": "esm/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "rollup": "rollup -c rollup.config.js",
-    "build": "npm run rollup"
+    "clean": "rm -rf dist && rm -rf types",
+    "build": "npm run clean && npm run rollup"
   },
   "files": [
-    "umd",
-    "esm"
+    "dist/*.js",
+    "types/*.d.ts"
   ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
