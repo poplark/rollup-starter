@@ -9,7 +9,5 @@ dest
 build
 esm
 umd
-cjs
-iife
 
 types

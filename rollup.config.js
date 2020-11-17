@@ -9,32 +9,35 @@ import { name, main, module, version } from './package.json';
 
 export default {
   input: 'src/index.ts',
-  output: [{
-    format: 'umd',
-    // dir: path.parse(main).dir,
-    file: main,
-    name,
-  }, {
-    format: 'esm',
-    // dir: path.parse(module).dir,
-    file: module,
-  // }, {
-  //   format: 'cjs',
-  //   dir: 'cjs',
-  // }, {
-  //   dir: 'iffe',
-  //   format: 'iife',
-  //   name: 'myRollup',
-  }],
+  output: [
+    {
+      format: 'umd',
+      // dir: path.parse(main).dir,
+      file: main,
+      name,
+    },
+    {
+      format: 'esm',
+      // dir: path.parse(module).dir,
+      file: module,
+      // }, {
+      //   format: 'cjs',
+      //   dir: 'cjs',
+      // }, {
+      //   dir: 'iffe',
+      //   format: 'iife',
+      //   name: 'myRollup',
+    },
+  ],
   plugins: [
     json(),
     resolve(),
     commonjs(),
     typescript({
-      useTsconfigDeclarationDir: true
+      useTsconfigDeclarationDir: true,
     }),
     replace({
-      __buildVersion: JSON.stringify(version)
-    })
+      __buildVersion: JSON.stringify(version),
+    }),
   ],
-}
+};

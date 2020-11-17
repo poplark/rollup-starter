@@ -1,7 +1,16 @@
+/**
+ * foo
+ */
 export const foo = 'foo';
 
+/**
+ * bar
+ */
 export const bar = 'bar';
 
-export function invoke() {
+/**
+ * invoke 方法
+ */
+export function invoke(): void {
   console.log(`invoke ${bar}`);
 }
